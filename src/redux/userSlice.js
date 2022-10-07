@@ -12,15 +12,16 @@ export const userSlice = createSlice({
   initialState: {
     userInfo: {
       name: "John",
-      email: "john@gmail.com"
+      email: "john@gmail.com",
     },
     pending: false,
-    error: false
+    error: false,
   },
   reducers: {},
   extraReducers: {
     [getUser2.pending]: (state) => {
       state.pending = true;
+      console.log("pending");
     },
     [getUser2.fulfilled]: (state, action) => {
       state.pending = false;
@@ -30,8 +31,9 @@ export const userSlice = createSlice({
     [getUser2.error]: (state, action) => {
       state.pending = false;
       state.error = true;
-    }
-  }
+      console.log("error");
+    },
+  },
 });
 
 export const { getUserError, getUserStart, getUserSuccess } = userSlice.actions;
